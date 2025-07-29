@@ -1,6 +1,7 @@
 package dto
 
 import org.jdbi.v3.core.mapper.reflect.ColumnName
+import java.util.UUID
 
 /**
  * Represents a team member in the system.
@@ -8,5 +9,6 @@ import org.jdbi.v3.core.mapper.reflect.ColumnName
 data class TeamMember(
   val id: Long,
   val name: String,
-  @ColumnName("fun_fact") val funFact: String? = null
+  @ColumnName("fun_fact") val funFact: String? = null,
+  val tmId: UUID?
 )

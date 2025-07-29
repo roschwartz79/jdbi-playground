@@ -18,7 +18,8 @@ class JDBITableCreator(val jdbi: Jdbi) {
             " (" +
             "id SERIAL PRIMARY KEY," +
             " name VARCHAR(255) NOT NULL UNIQUE," +
-            " fun_fact TEXT NULL)"
+            " fun_fact TEXT NULL," +
+            " tm_id UUID NULL)"
       )
     }
   }

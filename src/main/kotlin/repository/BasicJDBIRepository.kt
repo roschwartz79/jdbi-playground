@@ -24,9 +24,11 @@ class BasicJDBIRepository(val jdbi: Jdbi) {
    */
   fun addTeamMember(teamMember: TeamMember) {
     jdbi.withHandle<Unit, Exception> { handle ->
-      handle.createUpdate("INSERT INTO team_members (name, fun_fact) VALUES (:name, :funFact) ON CONFLICT (name) DO NOTHING")
-        .bind("name", teamMember.name)
-        .bind("funFact", teamMember.funFact)
+      handle.createUpdate("INSERT INTO team_members (name, fun_fact, tm_id) VALUES (:name, :funFact, :tmId) ON CONFLICT (name) DO NOTHING")
+        .bindBean(teamMember)
+//        .bind("name", teamMember.name)
+//        .bind("funFact", teamMember.funFact)
+//        .bind("tmId", teamMember.tmId)
         .execute()
     }
   }
@@ -36,10 +38,11 @@ class BasicJDBIRepository(val jdbi: Jdbi) {
    */
   fun updateTeamMember(teamMember: TeamMember) {
     jdbi.withHandle<Unit, Exception> { handle ->
-      handle.createUpdate("UPDATE team_members SET name = :name, fun_fact = :funFact WHERE id = :id")
+      handle.createUpdate("UPDATE team_members SET name = :name, fun_fact = :funFact, tm_id = :tmId WHERE id = :id")
         .bind("id", teamMember.id)
         .bind("name", teamMember.name)
         .bind("funFact", teamMember.funFact)
+        .bind("tmId", teamMember.tmId)
         .execute()
     }
   }

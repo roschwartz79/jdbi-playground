@@ -15,6 +15,7 @@ dependencies {
   implementation("org.jdbi:jdbi3-core:3.49.5")
   implementation("org.jdbi:jdbi3-kotlin:3.43.0")
   implementation("org.jdbi:jdbi3-kotlin-sqlobject:3.43.0")
+  implementation("org.jdbi:jdbi3-postgres:3.49.5")
 
   // HikariCP for connection pooling
   implementation("com.zaxxer:HikariCP:5.1.0")

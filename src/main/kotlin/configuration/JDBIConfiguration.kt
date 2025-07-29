@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import org.jdbi.v3.core.Jdbi
 import org.jdbi.v3.core.kotlin.KotlinPlugin
+import org.jdbi.v3.postgres.PostgresPlugin
 import java.util.Properties
 
 /**
@@ -21,7 +22,9 @@ class JDBIConfiguration {
     properties.setProperty("user", "jdbi_user")
     properties.setProperty("password", "password")
     val jdbi = Jdbi.create("jdbc:postgresql://localhost:5432/jdbi_playground", properties)
-    jdbi.installPlugin(KotlinPlugin())
+    jdbi
+      .installPlugin(KotlinPlugin(installKotlinMapperFactory = true))
+      .installPlugin(PostgresPlugin())
     return jdbi
   }
 

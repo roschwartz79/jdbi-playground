@@ -4,6 +4,7 @@ import org.jdbi.v3.core.Jdbi
 import org.slf4j.LoggerFactory
 import repository.BasicJDBIRepository
 import table.JDBITableCreator
+import java.util.UUID
 
 fun main(args: Array<String>) {
 
@@ -15,12 +16,14 @@ fun main(args: Array<String>) {
   val tm1 = TeamMember(
     id = 1,
     name = "Rob",
-    funFact = "Nothing special"
+    funFact = "Nothing special",
+    tmId = null
   )
   val tm2 = TeamMember(
     id = 2,
     name = "Alex",
-    funFact = "Supervisor"
+    funFact = "Supervisor",
+    tmId = null
   )
 
   basicJdbiRepository.addTeamMember(tm1)
